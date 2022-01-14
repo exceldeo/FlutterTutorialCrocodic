@@ -14,12 +14,26 @@ class _RowColumnScreenState extends State<RowColumnScreen> {
       body: SafeArea(
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(children: [
+              Spacer(
+                flex: 1,
+              ),
               Text("Hello World"),
+              Spacer(
+                flex: 1,
+              ),
               Text("Hello World"),
+              Spacer(
+                flex: 1,
+              ),
               Text("Hello World"),
+              Spacer(
+                flex: 1,
+              ),
               Text("Hello World"),
             ]),
             SizedBox(
