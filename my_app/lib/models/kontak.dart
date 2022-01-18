@@ -1,7 +1,7 @@
-class Kontak {
+class KontakModel {
   int id;
   String nama;
   String noHp;
 
-  Kontak({this.id, this.nama, this.noHp});
+  KontakModel({this.id, this.nama, this.noHp});
 }

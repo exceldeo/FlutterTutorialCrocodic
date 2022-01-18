@@ -5,7 +5,9 @@ import 'package:my_app/ListScreen.dart';
 import 'package:my_app/RowColumnScreen.dart';
 import 'package:my_app/SetStateScreen.dart';
 import 'package:my_app/StackScreen.dart';
-import 'package:my_app/homeScreen.dart';
+import 'package:my_app/TextFieldScreen.dart';
+import 'package:my_app/screen/homeScreen.dart';
+import 'package:my_app/screen/tambahKontakScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
           // or simply save your changes to "hot reload" in a Flutter IDE).
           // Notice that the counter didn't reset back to zero; the application
           // is not restarted.
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.amber,
         ),
         home: HomeScreen());
   }
