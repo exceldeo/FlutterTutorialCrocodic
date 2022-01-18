@@ -3,6 +3,7 @@ import 'package:my_app/models/kontak.dart';
 import 'package:my_app/screen/DetailKontakScreen.dart';
 import 'package:my_app/SecondScreen.dart';
 import 'package:my_app/screen/TambahKontakScreen.dart';
+import 'package:my_app/utils/DatabaseHelper.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -13,12 +14,20 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<KontakModel> _kontaks = [];
+  DatabaseHelper _dbHelper;
+
+  @override
+  void initState() {
+    super.initState();
+    _dbHelper = DatabaseHelper.instance;
+    _refreshContactList();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("My App"),
+        title: Text("Kontak App"),
       ),
       // backgroundColor: Colors.white,
       body: SafeArea(
@@ -45,9 +54,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         nama: result["nama"].text,
                         noHp: result["noHp"].text,
                       );
-                      setState(() {
-                        _kontaks.add(newKontak);
-                      });
+                      await _dbHelper.insertContact(newKontak);
+                      await _refreshContactList();
                     }
                   },
                   child: Text("Tambah"),
@@ -99,4 +107,11 @@ class _HomeScreenState extends State<HomeScreen> {
           },
         ),
       ));
+
+  _refreshContactList() async {
+    List<KontakModel> datas = await _dbHelper.fetchContacts();
+    setState(() {
+      _kontaks = datas;
+    });
+  }
 }

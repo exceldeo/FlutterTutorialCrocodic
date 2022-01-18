@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/models/kontak.dart';
 import 'package:my_app/screen/UbahKontakScreen.dart';
+import 'package:my_app/utils/DatabaseHelper.dart';
 
-class DetailKontakScreen extends StatelessWidget {
+class DetailKontakScreen extends StatefulWidget {
   const DetailKontakScreen({Key key, this.kontak}) : super(key: key);
 
   final KontakModel kontak;
+
+  @override
+  _DetailKontakScreenState createState() => _DetailKontakScreenState();
+}
+
+class _DetailKontakScreenState extends State<DetailKontakScreen> {
+  DatabaseHelper _dbHelper;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +47,7 @@ class DetailKontakScreen extends StatelessWidget {
                 flex: 1,
               ),
               Text(
-                kontak.nama,
+                widget.kontak.nama,
                 style: TextStyle(
                   fontSize: 16.0,
                   fontFamily: 'Roboto',
@@ -63,7 +71,7 @@ class DetailKontakScreen extends StatelessWidget {
                 flex: 1,
               ),
               Text(
-                kontak.noHp,
+                widget.kontak.noHp,
                 style: TextStyle(
                   fontSize: 16.0,
                   fontFamily: 'Roboto',
@@ -81,7 +89,12 @@ class DetailKontakScreen extends StatelessWidget {
                     child: Container(
                       width: double.infinity,
                       child: RaisedButton(
-                          onPressed: () {},
+                          onPressed: () async {
+                            var result =
+                                await _dbHelper.deleteContact(widget.kontak.id);
+                            print('result = ${result}');
+                            Navigator.pop(context);
+                          },
                           padding: EdgeInsets.symmetric(vertical: 10),
                           child: Text(
                             "Hapus",
@@ -107,9 +120,16 @@ class DetailKontakScreen extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => UbahKontakScreen(
-                                          kontak: kontak,
+                                          kontak: widget.kontak,
                                         )));
-                            print(result);
+                            if (result != null) {
+                              KontakModel editKontak = KontakModel(
+                                id: widget.kontak.id,
+                                nama: result["nama"].text,
+                                noHp: result["noHp"].text,
+                              );
+                              await _dbHelper.updateContact(editKontak);
+                            }
                           },
                           padding: EdgeInsets.symmetric(vertical: 10),
                           child: Text(

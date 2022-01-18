@@ -12,7 +12,6 @@ class UbahKontakScreen extends StatefulWidget {
 
 class _UbahKontakScreenState extends State<UbahKontakScreen> {
   Map<String, TextEditingController> mapTextController = {
-    "id": TextEditingController(),
     "nama": TextEditingController(),
     "noHp": TextEditingController(),
   };
@@ -20,7 +19,6 @@ class _UbahKontakScreenState extends State<UbahKontakScreen> {
   @override
   void initState() {
     super.initState();
-    mapTextController["id"].text = widget.kontak.id.toString();
     mapTextController["nama"].text = widget.kontak.nama;
     mapTextController["noHp"].text = widget.kontak.noHp;
   }
