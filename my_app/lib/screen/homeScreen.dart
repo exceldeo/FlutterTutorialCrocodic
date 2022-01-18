@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/models/kontak.dart';
 import 'package:my_app/screen/DetailKontakScreen.dart';
-import 'package:my_app/screen/SecondScreen.dart';
+import 'package:my_app/SecondScreen.dart';
 import 'package:my_app/screen/TambahKontakScreen.dart';
 
 class HomeScreen extends StatefulWidget {

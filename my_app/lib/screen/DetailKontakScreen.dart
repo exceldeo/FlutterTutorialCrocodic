@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/models/kontak.dart';
+import 'package:my_app/screen/UbahKontakScreen.dart';
 
 class DetailKontakScreen extends StatelessWidget {
   const DetailKontakScreen({Key key, this.kontak}) : super(key: key);
@@ -101,7 +102,15 @@ class DetailKontakScreen extends StatelessWidget {
                     child: Container(
                       width: double.infinity,
                       child: RaisedButton(
-                          onPressed: () {},
+                          onPressed: () async {
+                            var result = await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => UbahKontakScreen(
+                                          kontak: kontak,
+                                        )));
+                            print(result);
+                          },
                           padding: EdgeInsets.symmetric(vertical: 10),
                           child: Text(
                             "Ubah",
