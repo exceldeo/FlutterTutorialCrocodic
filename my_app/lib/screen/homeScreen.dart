@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/models/kontak.dart';
+import 'package:my_app/screen/DetailKontakScreen.dart';
 import 'package:my_app/screen/SecondScreen.dart';
 import 'package:my_app/screen/TambahKontakScreen.dart';
 
@@ -33,19 +34,21 @@ class _HomeScreenState extends State<HomeScreen> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => TambahKontakScreen()));
-                    print(result["nama"].text);
-                    print(result["noHp"].text);
-                    print(DateTime.now().millisecondsSinceEpoch);
-                    int id = DateTime.now().millisecondsSinceEpoch;
-                    print(id.toString());
-                    KontakModel newKontak = KontakModel(
-                      id: id,
-                      nama: result["nama"].text,
-                      noHp: result["noHp"].text,
-                    );
-                    setState(() {
-                      _kontaks.add(newKontak);
-                    });
+                    if (result != null) {
+                      print(result["nama"].text);
+                      print(result["noHp"].text);
+                      print(DateTime.now().millisecondsSinceEpoch);
+                      int id = DateTime.now().millisecondsSinceEpoch;
+                      print(id.toString());
+                      KontakModel newKontak = KontakModel(
+                        id: id,
+                        nama: result["nama"].text,
+                        noHp: result["noHp"].text,
+                      );
+                      setState(() {
+                        _kontaks.add(newKontak);
+                      });
+                    }
                   },
                   child: Text("Tambah"),
                   color: Colors.amber,
@@ -54,45 +57,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     // side: BorderSide(color: Colors.red)
                   )),
             ),
-            // Column(
-            //   children: _kontaks
-            //       .map((e) => Container(
-            //             height: 80,
-            //             width: double.infinity,
-            //             decoration: new BoxDecoration(
-            //               boxShadow: [
-            //                 new BoxShadow(
-            //                   color: Colors.black.withOpacity(0.1),
-            //                   blurRadius: 2.0,
-            //                 ),
-            //               ],
-            //             ),
-            //             child: Card(
-            //               // color: Colors.black,
-            //               child: Row(
-            //                 children: [
-            //                   Image.asset('assets/logoCrocodic.png'),
-            //                   Column(
-            //                     children: [
-            //                       Spacer(
-            //                         flex: 1,
-            //                       ),
-            //                       Text("${e.nama}"),
-            //                       Spacer(
-            //                         flex: 1,
-            //                       ),
-            //                       Text("${e.noHp}"),
-            //                       Spacer(
-            //                         flex: 1,
-            //                       ),
-            //                     ],
-            //                   )
-            //                 ],
-            //               ),
-            //             ),
-            //           ))
-            //       .toList(),
-            // )
             _list()
           ],
         ),
@@ -122,6 +86,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 leading: Image.asset('assets/logoCrocodic.png'),
                 title: Text(_kontaks[index].nama.toUpperCase()),
                 subtitle: Text(_kontaks[index].noHp),
+                onTap: () {
+                  print(_kontaks[index].id.toString());
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              DetailKontakScreen(kontak: _kontaks[index])));
+                },
               ),
             );
           },
