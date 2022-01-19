@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/ButtonScreen.dart';
-import 'package:my_app/DimensiScreen.dart';
-import 'package:my_app/ListScreen.dart';
-import 'package:my_app/RowColumnScreen.dart';
-import 'package:my_app/SetStateScreen.dart';
-import 'package:my_app/StackScreen.dart';
-import 'package:my_app/TextFieldScreen.dart';
+import 'package:my_app/screen/SplashScreen.dart';
 import 'package:my_app/screen/homeScreen.dart';
-import 'package:my_app/screen/tambahKontakScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -31,6 +24,6 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.amber,
         ),
-        home: HomeScreen());
+        home: SplashScreen());
   }
 }
