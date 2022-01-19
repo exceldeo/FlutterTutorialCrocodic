@@ -47,6 +47,7 @@ class DatabaseHelper {
 
 //contact - update
   Future<int> updateContact(KontakModel contact) async {
+    print(contact.nama);
     Database db = await database;
     return await db.update(KontakModel.tblKontak, contact.toMap(),
         where: '${KontakModel.colId}=?', whereArgs: [contact.id]);

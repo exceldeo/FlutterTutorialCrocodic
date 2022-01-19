@@ -16,6 +16,12 @@ class _DetailKontakScreenState extends State<DetailKontakScreen> {
   DatabaseHelper _dbHelper;
 
   @override
+  void initState() {
+    super.initState();
+    _dbHelper = DatabaseHelper.instance;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -128,7 +134,15 @@ class _DetailKontakScreenState extends State<DetailKontakScreen> {
                                 nama: result["nama"].text,
                                 noHp: result["noHp"].text,
                               );
-                              await _dbHelper.updateContact(editKontak);
+                              var result2 =
+                                  await _dbHelper.updateContact(editKontak);
+                              print('result = ${result2}');
+                              if (result2 == 1) {
+                                setState(() {
+                                  widget.kontak.nama = editKontak.nama;
+                                  widget.kontak.noHp = editKontak.noHp;
+                                });
+                              }
                             }
                           },
                           padding: EdgeInsets.symmetric(vertical: 10),

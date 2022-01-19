@@ -72,41 +72,50 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  _list() => Expanded(
-          child: Card(
-        child: ListView.builder(
-          padding: EdgeInsets.all(8),
-          itemCount: _kontaks.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Container(
-              height: 80,
-              width: double.infinity,
-              decoration: new BoxDecoration(
-                boxShadow: [
-                  new BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
-                    blurRadius: 2.0,
-                  ),
-                ],
-              ),
-              margin: EdgeInsets.only(bottom: 5),
-              child: ListTile(
-                leading: Image.asset('assets/logoCrocodic.png'),
-                title: Text(_kontaks[index].nama.toUpperCase()),
-                subtitle: Text(_kontaks[index].noHp),
-                onTap: () {
-                  print(_kontaks[index].id.toString());
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              DetailKontakScreen(kontak: _kontaks[index])));
-                },
-              ),
-            );
-          },
-        ),
-      ));
+  _list() => FutureBuilder(
+      future: _refreshContactList(),
+      builder: (context, projectSnap) {
+        if (projectSnap.connectionState == ConnectionState.none &&
+            projectSnap.hasData == null) {
+          //print('project snapshot data is: ${projectSnap.data}');
+          return Container();
+        }
+        return Expanded(
+            child: Card(
+          child: ListView.builder(
+            padding: EdgeInsets.all(8),
+            itemCount: _kontaks.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Container(
+                height: 80,
+                width: double.infinity,
+                decoration: new BoxDecoration(
+                  boxShadow: [
+                    new BoxShadow(
+                      color: Colors.black.withOpacity(0.05),
+                      blurRadius: 2.0,
+                    ),
+                  ],
+                ),
+                margin: EdgeInsets.only(bottom: 5),
+                child: ListTile(
+                  leading: Image.asset('assets/logoCrocodic.png'),
+                  title: Text(_kontaks[index].nama.toUpperCase()),
+                  subtitle: Text(_kontaks[index].noHp),
+                  onTap: () {
+                    print(_kontaks[index].id.toString());
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                DetailKontakScreen(kontak: _kontaks[index])));
+                  },
+                ),
+              );
+            },
+          ),
+        ));
+      });
 
   _refreshContactList() async {
     List<KontakModel> datas = await _dbHelper.fetchContacts();
