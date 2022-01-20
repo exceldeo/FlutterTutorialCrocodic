@@ -12,46 +12,40 @@ class _StackScreenState extends State<StackScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Stack(children: [
+          child:
+              // Stack(children: [
+              //   Container(
+              //     color: Colors.green,
+              //   ),
+              //   Container(
+              //     color: Colors.red,
+              //     height: 400.0,
+              //     width: 300.0,
+              //   ),
+              //   Container(
+              //     color: Colors.deepPurple,
+              //     height: 200.0,
+              //     width: 200.0,
+              //   ),
+              // ]),
+              IndexedStack(
+        index: 2,
+        children: [
           Container(
-            color: Colors.amber,
+            color: Colors.green,
           ),
-          Column(
-            // mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(children: [
-                Text("Hello World"),
-                Text("Hello World"),
-                Text("Hello World"),
-                Text("Hello World"),
-              ]),
-              SizedBox(
-                height: 13,
-              ),
-              Row(children: [
-                Text("Hello World"),
-                Text("Hello World"),
-                Text("Hello World"),
-                Text("Hello World"),
-              ]),
-              SizedBox(
-                height: 13,
-              ),
-              Row(children: [
-                Text("Hello World"),
-                Text("Hello World"),
-                Text("Hello World"),
-                Text("Hello World"),
-              ]),
-            ],
+          Container(
+            color: Colors.red,
+            height: 400.0,
+            width: 300.0,
           ),
-          RaisedButton(
-            onPressed: () {},
-            child: Text('Enabled Button', style: TextStyle(fontSize: 20)),
+          Container(
+            color: Colors.deepPurple,
+            height: 200.0,
+            width: 200.0,
           ),
-        ]),
-      ),
+        ],
+      )),
     );
   }
 }
