@@ -12,7 +12,8 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
   Widget build(BuildContext context) {
     // TextEditingController controller =
     // TextEditingController(text: "Nilai Awal");
-    TextEditingController controller = TextEditingController();
+    TextEditingController nameController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
     //         Map<String, TextEditingController> mapTextController = {
     //   "nama": TextEditingController(),
     //   "noHp": TextEditingController(),
@@ -22,24 +23,36 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
         title: Text("My App"),
       ),
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextField(
-              // obscureText: true,
-              onChanged: (value) {
-                print(value);
-              },
-              controller: controller,
-              style: TextStyle(
-                fontSize: 16.0,
-                fontFamily: 'Roboto',
-                color: Colors.black,
-                // fontWeight: FontWeight.bold,
-                fontWeight: FontWeight.bold,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.all(15),
+                child: TextField(
+                  controller: nameController,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'User Name',
+                    hintText: 'Enter Your Name',
+                  ),
+                ),
               ),
-            ),
-          ],
+              Padding(
+                padding: EdgeInsets.all(15),
+                child: TextField(
+                  controller: passwordController,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Password',
+                    hintText: 'Enter Password',
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
