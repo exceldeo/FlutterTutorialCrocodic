@@ -9,6 +9,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  Map<String, TextEditingController> mapTextController = {
+    "nama": TextEditingController(),
+    "noHp": TextEditingController(),
+  };
+
   List<Map<String, String>> contacts = [
     {"nama": 'Excel', "noHp": '123454679'},
     {"nama": 'Deo', "noHp": '987654321'}
@@ -38,6 +43,42 @@ class _HomeScreenState extends State<HomeScreen> {
                   //     MaterialPageRoute(
                   //         builder: (context) => const SecondRoute()));
                 },
+                child: Text("Ke halaman berikutnya"),
+                color: Colors.amber,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5),
+                  // side: BorderSide(color: Colors.red)
+                )),
+            TextField(
+              controller: mapTextController['nama'],
+              style: TextStyle(
+                fontSize: 16.0,
+                fontFamily: 'Roboto',
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            TextField(
+              controller: mapTextController['noHp'],
+              keyboardType: TextInputType.number,
+              style: TextStyle(
+                fontSize: 16.0,
+                fontFamily: 'Roboto',
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            RaisedButton(
+                onPressed: () {
+                  setState(() {
+                    contacts.add({
+                      "nama": mapTextController['nama'].text,
+                      "noHp": mapTextController['noHp'].text
+                    });
+                    mapTextController['nama'].clear();
+                    mapTextController['noHp'].clear();
+                  });
+                },
                 child: Text("Tambah"),
                 color: Colors.amber,
                 shape: RoundedRectangleBorder(
@@ -59,25 +100,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         child: Card(
                           // color: Colors.black,
-                          child: Row(
-                            children: [
-                              Image.asset('assets/logoCrocodic.png'),
-                              Column(
-                                children: [
-                                  Spacer(
-                                    flex: 1,
-                                  ),
-                                  Text("${e['nama']}"),
-                                  Spacer(
-                                    flex: 1,
-                                  ),
-                                  Text("${e['noHp']}"),
-                                  Spacer(
-                                    flex: 1,
-                                  ),
-                                ],
-                              )
-                            ],
+                          child: ListTile(
+                            leading: Image.asset('assets/logoCrocodic.png'),
+                            title: Text("${e['nama']}"),
+                            subtitle: Text("${e['noHp']}"),
                           ),
                         ),
                       ))
