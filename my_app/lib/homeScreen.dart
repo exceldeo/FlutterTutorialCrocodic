@@ -31,7 +31,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   // side: BorderSide(color: Colors.red)
                 )),
             Container(
-              height: 80,
               width: double.infinity,
               decoration: new BoxDecoration(
                 boxShadow: [
@@ -43,18 +42,23 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               child: Card(
                 // color: Colors.black,
-                child: Row(
+                child: Column(
                   children: [
-                    Image.asset('assets/logoCrocodic.png'),
-                    Column(
-                      children: [
-                        Text("Nama"),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        Text("No Hp")
-                      ],
-                    )
+                    ListTile(
+                      leading: Image.asset('assets/logoCrocodic.png'),
+                      title: Text("Mentor"),
+                      subtitle: Text("1234568"),
+                    ),
+                    ListTile(
+                      leading: Image.asset('assets/logoCrocodic.png'),
+                      title: Text("Mentor"),
+                      subtitle: Text("1234568"),
+                    ),
+                    ListTile(
+                      leading: Image.asset('assets/logoCrocodic.png'),
+                      title: Text("Mentor"),
+                      subtitle: Text("1234568"),
+                    ),
                   ],
                 ),
               ),
