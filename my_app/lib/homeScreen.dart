@@ -49,23 +49,27 @@ class _HomeScreenState extends State<HomeScreen> {
                   borderRadius: BorderRadius.circular(5),
                   // side: BorderSide(color: Colors.red)
                 )),
-            TextField(
-              controller: mapTextController['nama'],
-              style: TextStyle(
-                fontSize: 16.0,
-                fontFamily: 'Roboto',
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
+            Padding(
+              padding: EdgeInsets.all(15),
+              child: TextField(
+                controller: mapTextController['nama'],
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Nama',
+                  hintText: 'Masukan Nama Anda',
+                ),
               ),
             ),
-            TextField(
-              controller: mapTextController['noHp'],
-              keyboardType: TextInputType.number,
-              style: TextStyle(
-                fontSize: 16.0,
-                fontFamily: 'Roboto',
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
+            Padding(
+              padding: EdgeInsets.all(15),
+              child: TextField(
+                keyboardType: TextInputType.number,
+                controller: mapTextController['noHp'],
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'No Hp',
+                  hintText: 'Masukan No Hp',
+                ),
               ),
             ),
             RaisedButton(
