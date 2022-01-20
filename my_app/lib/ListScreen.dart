@@ -32,9 +32,50 @@ class _ListScreenState extends State<ListScreen> {
         title: Text("App Bar"),
       ),
       body: SafeArea(
-        child: ListView(
-          children: widgets,
-        ),
+        child: ListView(children: widgets
+            // [
+            //   Text(
+            //     "Data 1",
+            //     style: TextStyle(fontSize: 30),
+            //   ),
+            //   Text(
+            //     "Data 2",
+            //     style: TextStyle(fontSize: 30),
+            //   ),
+            //   Text(
+            //     "Data 3",
+            //     style: TextStyle(fontSize: 30),
+            //   ),
+            //   Text(
+            //     "Data 4",
+            //     style: TextStyle(fontSize: 30),
+            //   ),
+            //   Text(
+            //     "Data 5",
+            //     style: TextStyle(fontSize: 30),
+            //   ),
+            //   Text(
+            //     "Data 6",
+            //     style: TextStyle(fontSize: 30),
+            //   ),
+            //   Text(
+            //     "Data 7",
+            //     style: TextStyle(fontSize: 30),
+            //   ),
+            //   Text(
+            //     "Data 8",
+            //     style: TextStyle(fontSize: 30),
+            //   ),
+            //   Text(
+            //     "Data 9",
+            //     style: TextStyle(fontSize: 30),
+            //   ),
+            //   Text(
+            //     "Data 10",
+            //     style: TextStyle(fontSize: 30),
+            //   ),
+            // ],
+            ),
       ),
     );
   }
