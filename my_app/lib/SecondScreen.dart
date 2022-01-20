@@ -13,6 +13,9 @@ class SecondRoute extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () {
             Navigator.pop(context);
+            // Navigator.popAndPushNamed(context, '/navigatorScreen');
+            // Navigator.popUntil(
+            //     context, ModalRoute.withName('/navigatorScreen'));
           },
           child: const Text('Go back!'),
         ),

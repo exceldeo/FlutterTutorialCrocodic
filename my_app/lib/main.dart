@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:my_app/ButtonScreen.dart';
 import 'package:my_app/DimensiScreen.dart';
 import 'package:my_app/ListScreen.dart';
+import 'package:my_app/NavigatorScreen.dart';
 import 'package:my_app/RowColumnScreen.dart';
+import 'package:my_app/SecondScreen.dart';
 import 'package:my_app/SetStateScreen.dart';
 import 'package:my_app/StackScreen.dart';
+import 'package:my_app/TextFieldScreen.dart';
 import 'package:my_app/homeScreen.dart';
 
 void main() {
@@ -29,6 +32,11 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
-        home: HomeScreen());
+        initialRoute: "/homeScreen",
+        routes: {
+          "/navigatorScreen": (context) => NavigatorScreen(),
+          "/secondScreen": (context) => SecondRoute(),
+          "/homeScreen": (context) => HomeScreen(),
+        });
   }
 }
