@@ -18,7 +18,7 @@ class _ButtonScreenState extends State<ButtonScreen> {
           children: [
             RaisedButton(
               onPressed: () {},
-              child: Text('Enabled Button', style: TextStyle(fontSize: 20)),
+              child: Text('Raised Button', style: TextStyle(fontSize: 20)),
             ),
             FlatButton(
               onPressed: () {},
